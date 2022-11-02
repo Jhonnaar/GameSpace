@@ -4,6 +4,7 @@ import Filters from "./pages/filters.js";
 import Home from "./pages/home.js"
 import Inventory from "./pages/inventory.js";
 import Statistics from "./pages/statistics.js"
+import User from "./pages/user.js";
 
 function App() {
   return(
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/statistic" element={<Statistics/>} ></Route>
         <Route exact path="/filter/:keyFilter/:valueFilter" element={<Filters/>} ></Route>
         <Route exact path="/inventory/:action" element={<Inventory/>} ></Route>
+        <Route exact path="/user/:id" element={<User/>} ></Route>
       </Routes>
     </BrowserRouter>
   )

@@ -9,6 +9,7 @@ export default function Section() {
     const [valueFilter, setValueFilter] = useState("")
     const [keyFilter, setKeyFilter] = useState("")
     const [inventoryAction, setInventoryAction] = useState("")
+    const [userId, setUserId] = useState("")
     return(
         <div className="bg-slate-100 my-5 mx-12">
             <div className="bg-stone-800 grid grid-cols-1 lg:grid-cols-2">
@@ -66,11 +67,11 @@ export default function Section() {
                         <h1 className="font-mainFont text-4xl text-stone-800">User</h1>
                     </div>
                     <div className="max-w-[15rem] m-auto">
-                        <Link to="/"><img className="" src={image4} alt="" ></img></Link>
+                        <Link to={`/user/${userId}`}><img className="" src={image4} alt="" ></img></Link>
                     </div>
                     <div className="col-span-1 mx-auto my-2 font-mainFont text-xs text-stone-800">
                         <form>
-                            <input type="Text" className="bg-cyan-400 rounded-2xl p-1"></input>
+                            <input type="Text" className="bg-cyan-400 rounded-2xl p-1" onChange={ev=>{setUserId(ev.target.value)}}></input>
                         </form>
                     </div>
                 </div>
