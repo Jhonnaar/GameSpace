@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Filters from "./pages/filters.js";
 import Home from "./pages/home.js"
 import Inventory from "./pages/inventory.js";
-import Statistics from "./pages/statistics.js"
+import Statistic from "./pages/statistic.js"
 import User from "./pages/user.js";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home/>} ></Route>
-        <Route exact path="/statistic" element={<Statistics/>} ></Route>
+        <Route exact path="/statistic" element={<Statistic/>} ></Route>
         <Route exact path="/filter/:keyFilter/:valueFilter" element={<Filters/>} ></Route>
         <Route exact path="/inventory/:action" element={<Inventory/>} ></Route>
         <Route exact path="/user/:id" element={<User/>} ></Route>

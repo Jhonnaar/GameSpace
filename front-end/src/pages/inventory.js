@@ -1,5 +1,4 @@
 import Header from "../components/Header"
-import "boxicons"
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 
