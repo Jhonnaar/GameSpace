@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mainFont: ["'Press Start 2P'"]
+      }
+    },
   },
   plugins: [],
 }

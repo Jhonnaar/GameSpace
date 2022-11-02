@@ -1,7 +1,12 @@
 import Header from "../components/Header"
+import Section from "../components/Section"
 import "boxicons"
+
 export default function Home() {
     return(
-        <Header/>
+        <div>
+            <Header/>
+            <Section/>
+        </div>
     )
 }
