@@ -1,0 +1,15 @@
+create database gameSpaceDB
+
+create table games (gameId int primary key identity(1,1), gameName varchar(50) NOT NUll, launchDate int NOT NULL, mainCharacter varchar(50) NOT NULL, gameDirector varchar(50) NOT NULL, producer varchar(50) NOT NULL, gamePlatform varchar(50) NOT NULL, gamePrice money NOT NULL, stock int NOT NULL);
+	insert games (gameName, launchDate, mainCharacter, gameDirector, producer, gamePlatform, gamePrice, stock)
+		values
+			('Fifa 23', 2022, 'EL Bicho', 'Yukimoto', 'EA', 'PlayStation', 1.7, 21),
+			('Mario Narco', 2023, 'Mario Bros', 'Kunoimo', 'Nintendo', 'Nintendo', 0.99, 16),
+			('Call of Dutty: WarZone', 2018, 'User', 'Minome', 'Activision', 'PlayStation', 1.2, 18),
+			('Call of Dutty: WarZone', 2018, 'User', 'Minome', 'Activision', 'PC', 0.89, 8),
+			('Halo: New age', 2026, 'Mike', 'Jerikoto', 'Micrisoft', 'Xbox', 2, 12);
+create table users (userId int primary key NOT NULL, fullName varchar(50) NOT NULL, age int NOT NULL, email varchar(50) NOT NULL, phoneNumber int NOT NULL)
+create table rents (rentId int primary key identity(1,1), userId int NOT NULL, gameId int NOT NULL, rentedDate date NOT NULL, paid bit NOT NULL, constraint fk_user foreign key (userId) references users (userId), constraint fk_game foreign key (gameId) references games (gameId))
+
+
+Scaffold-DbContext "Data Source=DESKTOP-6GAH6SI;Initial Catalog=gameSpaceDB;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Outputdir Models -Tables games, users, rents -DataAnnotations -ContextDir DBContext -Context "AppDbContext"
