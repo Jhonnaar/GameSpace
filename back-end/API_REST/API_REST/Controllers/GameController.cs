@@ -18,38 +18,31 @@ namespace API_REST.Controllers
             this.context = context;
         }
 
-        // GET: api/<GameController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET api/<GameController>/5
         [HttpGet("{key}/{value}")]
-        public Game Get(string key, string value)
+        public dynamic Get(string key, string value)
         {
             
             if (key == "gameDirector")
             {
-                var gamesList = context.Games.FirstOrDefault(game => game.GameDirector == value);
+                var gamesList = context.Games.Where(game => game.GameDirector == value);
                 return gamesList;
             }
             else {
                 if (key == "mainCharacter")
                 {
-                    var gamesList = context.Games.FirstOrDefault(game => game.MainCharacter == value);
+                    var gamesList = context.Games.Where(game => game.MainCharacter == value);
                     return gamesList;
                 }
                 else {
                     if (key == "producer")
                     {
-                        var gamesList = context.Games.FirstOrDefault(game => game.Producer == value);
+                        var gamesList = context.Games.Where(game=>game.Producer==value);
                         return gamesList;
                     }
                     else
                     {
-                        var gamesList = context.Games.FirstOrDefault(game => game.LaunchDate == Int32.Parse(value));
+                        var gamesList = context.Games.Where(game => game.LaunchDate == Int32.Parse(value));
                         return gamesList;
                     }
                 }
