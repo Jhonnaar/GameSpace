@@ -20,9 +20,5 @@ namespace API_REST.Models
         public DateTime RentedDate { get; set; }
         [Column("paid")]
         public bool Paid { get; set; }
-
-        [ForeignKey("UserId")]
-        [InverseProperty("Rents")]
-        public virtual User User { get; set; } = null!;
     }
 }

@@ -2,14 +2,38 @@ import image1 from "../../assets/Images/forRent.png"
 import image2 from "../../assets/Images/statistics.png"
 import image3 from "../../assets/Images/inventory.png"
 import image4 from "../../assets/Images/clientInformation.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import Filters from "../../pages/filters"
 
 export default function Section() {
     const [valueFilter, setValueFilter] = useState("")
     const [keyFilter, setKeyFilter] = useState("")
     const [inventoryAction, setInventoryAction] = useState("")
     const [userId, setUserId] = useState("")
+    const navigate = useNavigate()
+    const filter = () => {
+        if (valueFilter && keyFilter) {
+            navigate(`/filter/${keyFilter+"/"+valueFilter}`)
+        }else{
+            alert("400: Bad Request")
+        }
+    }
+    const inventory = () => {
+        if (inventoryAction) {
+            navigate(`/inventory/${inventoryAction}`)
+        }else{
+            alert("400: Bad Request")
+        }
+    }
+    const userInfo = () => {
+        if (userId) {
+            navigate(`/user/${userId}`)
+        }else{
+            alert("400: Bad Request")
+        }
+    }
+
     return(
         <div className="bg-slate-100 my-5 mx-12">
             <div className="bg-stone-800 grid grid-cols-1 lg:grid-cols-2">
@@ -18,7 +42,7 @@ export default function Section() {
                         <h1 className="font-mainFont text-4xl text-stone-800">Games</h1>
                     </div>
                     <div className="max-w-[15rem] m-auto">
-                        <Link to={`/filter/${keyFilter+"/"+valueFilter}`}><img className="" src={image1} alt="" ></img></Link>
+                        <button><img className="" src={image1} alt="" onClick={filter}></img></button>
                     </div>
                     <div className="col-span-1 mx-auto my-2 font-mainFont text-xs text-stone-800">
                         <form id="filter">
@@ -50,7 +74,7 @@ export default function Section() {
                         <h1 className="font-mainFont text-4xl text-stone-800">Inventory</h1>
                     </div>
                     <div className="max-w-[15rem] m-auto">
-                        <Link to={`/inventory/${inventoryAction}`}><img className="" src={image3} alt="" ></img></Link>
+                        <button onClick={inventory}><img className="" src={image3} alt="" ></img></button>
                     </div>
                     <div className="col-span-1 mx-auto my-2 font-mainFont text-xs text-stone-800">
                         <form id="selectAction">
@@ -67,7 +91,7 @@ export default function Section() {
                         <h1 className="font-mainFont text-4xl text-stone-800">User</h1>
                     </div>
                     <div className="max-w-[15rem] m-auto">
-                        <Link to={`/user/${userId}`}><img className="" src={image4} alt="" ></img></Link>
+                        <button onClick={userInfo}><img className="" src={image4} alt="" ></img></button>
                     </div>
                     <div className="col-span-1 mx-auto my-2 font-mainFont text-xs text-stone-800">
                         <form>

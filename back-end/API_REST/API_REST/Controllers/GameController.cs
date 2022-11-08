@@ -2,6 +2,7 @@
 using API_REST.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,7 +19,21 @@ namespace API_REST.Controllers
             this.context = context;
         }
 
-        // GET api/<GameController>/5
+        [HttpGet("{gameId}")]
+        public dynamic getById(int gameId) 
+        {
+            try
+            {
+                return context.Games.FirstOrDefault(e=>e.GameId==gameId);
+            }
+            catch (Exception e)
+            {
+                return e;
+            }
+        }
+        
+
+        // GET api/<GameController>/producer/EA
         [HttpGet("{key}/{value}")]
         public dynamic Get(string key, string value)
         {
@@ -51,7 +66,7 @@ namespace API_REST.Controllers
 
         // POST api/<GameController>
         [HttpPost]
-        public ActionResult Post([FromBody] Game game)
+        public dynamic Post([FromBody] Game game)
         {
             try
             {
@@ -61,7 +76,7 @@ namespace API_REST.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return e;
             }
         }
 
@@ -85,12 +100,6 @@ namespace API_REST.Controllers
             {
                 return BadRequest();
             }
-        }
-
-        // DELETE api/<GameController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

@@ -9,11 +9,6 @@ namespace API_REST.Models
     [Table("users")]
     public partial class User
     {
-        public User()
-        {
-            Rents = new HashSet<Rent>();
-        }
-
         [Key]
         [Column("userId")]
         public int UserId { get; set; }
@@ -29,8 +24,5 @@ namespace API_REST.Models
         public string Email { get; set; } = null!;
         [Column("phoneNumber")]
         public int PhoneNumber { get; set; }
-
-        [InverseProperty("User")]
-        public virtual ICollection<Rent> Rents { get; set; }
     }
 }

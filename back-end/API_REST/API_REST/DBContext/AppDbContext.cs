@@ -32,15 +32,6 @@ namespace API_REST.DBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Rent>(entity =>
-            {
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Rents)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_user");
-            });
-
             modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.UserId).ValueGeneratedNever();
