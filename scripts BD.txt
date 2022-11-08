@@ -8,6 +8,11 @@ create table games (gameId int primary key identity(1,1), gameName varchar(50) N
 			('Call of Dutty: WarZone', 2018, 'User', 'Minome', 'Activision', 'PlayStation', 1.2, 18),
 			('Call of Dutty: WarZone', 2018, 'User', 'Minome', 'Activision', 'PC', 0.89, 8),
 			('Halo: New age', 2026, 'Mike', 'Jerikoto', 'Micrisoft', 'Xbox', 2, 12);
+			('Super Smash Bros: Ultimate', 2021, 'Link', 'Shisui', 'Nintendo', 'Nintendo', 2, 12),
+			('Spider Man', 2020, 'Petter Parker', 'Moe', 'Sony', 'PlayStation', 0.99, 16),
+			('Call of Dutty: Black Ops 4', 2019, 'Tete', 'Unoiki', 'Activision', 'PlayStation', 1.3, 17),
+			('Need for Speed: Not Limits', 2016, 'Adam', 'Frich', 'EA', 'PC', 0.69, 21),
+			('Aliens', 2023, 'Eli', 'Shuote', 'Micrisoft', 'Xbox', 1.1, 16);
 create table users (userId int primary key NOT NULL, fullName varchar(50) NOT NULL, age int NOT NULL, email varchar(50) NOT NULL, phoneNumber int NOT NULL)
 create table rents (rentId int primary key identity(1,1), userId int NOT NULL, gameId int NOT NULL, rentedDate date NOT NULL, paid bit NOT NULL, constraint fk_user foreign key (userId) references users (userId), constraint fk_game foreign key (gameId) references games (gameId))
 
